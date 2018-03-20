@@ -11,7 +11,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <a href="{{ route('slider.create') }}" class="btn btn-info">Add New</a>
+                    <a href="{{ route('slider.create') }}" class="btn btn-primary">Add New</a>
 
                     @include('layouts.include.msg')
 
@@ -21,7 +21,7 @@
                             <!-- <p class="category">Here is a subtitle for this table</p> -->
                         </div>
                         <div class="card-content table-responsive">
-                            <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <table id="table" class="table" cellspacing="0" width="100%">
                                 <thead class="text-primary">
                                     <th>ID</th>
                                     <th>Title</th>
@@ -42,7 +42,17 @@
                                             <td>{{ $slider->updated_at }}</td>
                                             <td>
                                                 <a href="{{ route('slider.edit', $slider->id) }}" class="btn btn-info btn-sm">Edit</a>
-                                                <a href="{{ route('slider.destroy', $slider->id) }}" class="btn btn-danger btn-sm">Delete</a>
+
+                                                <form id="delete-from-{{ $slider->id }}" action="{{ route('slider.destroy', $slider->id) }}" style="display:none;" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
+                                                <button class="btn btn-danger btn-sm" type="button" onclick="if(confirm('Are you sure? You want to delete this?')){
+                                                    event.preventDefault();
+                                                    document.getElementById('delete-from-{{ $slider->id }}').submit();
+                                                } else {
+                                                    event.preventDefault();
+                                                }">Delete</button>
                                             </td>
                                         </tr>
                                     @endforeach
