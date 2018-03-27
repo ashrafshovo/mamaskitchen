@@ -41,7 +41,7 @@
                                             <td>{{ $slider->created_at }}</td>
                                             <td>{{ $slider->updated_at }}</td>
                                             <td>
-                                                <a href="{{ route('slider.edit', $slider->id) }}" class="btn btn-info btn-sm">Edit</a>
+                                                <a href="{{ route('slider.edit', $slider->id) }}" class="btn btn-info btn-sm"><i class="material-icons">edit</i></a>
 
                                                 <form id="delete-from-{{ $slider->id }}" action="{{ route('slider.destroy', $slider->id) }}" style="display:none;" method="POST">
                                                     @csrf
@@ -52,7 +52,7 @@
                                                     document.getElementById('delete-from-{{ $slider->id }}').submit();
                                                 } else {
                                                     event.preventDefault();
-                                                }">Delete</button>
+                                                }"><i class="material-icons">delete</i></button>
                                             </td>
                                         </tr>
                                     @endforeach
