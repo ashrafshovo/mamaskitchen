@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Slider')
+@section('title', 'Slider || Edit')
 
 @push('css')
 
@@ -16,7 +16,7 @@
 
                     <div class="card">
                         <div class="card-header" data-background-color="purple">
-                            <h4 class="title">Add New Slider</h4>
+                            <h4 class="title">Edit Slider</h4>
                             <!-- <p class="category">Here is a subtitle for this table</p> -->
                         </div>
                         <div class="card-content">
