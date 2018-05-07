@@ -16,6 +16,15 @@
         <link rel="stylesheet" href="{{ asset('front/css/flexslider.css') }}">
         <link rel="stylesheet" href="{{ asset('front/css/pricing.css') }}">
         <link rel="stylesheet" href="{{ asset('front/css/main.css') }}">
+        <style>
+            @foreach ($sliders as $key=>$slider)
+                .owl-carousel .owl-wrapper, .owl-carousel .owl-item:nth-child({{ $key+1 }}) .item
+                {
+                    background: url( {{ asset('uploads/slider/'.$slider->image) }} );
+                    background-size: cover;
+                }
+            @endforeach
+        </style>
 
 
         <script src="{{ asset('front/js/jquery-1.11.2.min.js') }}"></script>
@@ -28,7 +37,7 @@
                 });
             });
         </script>
-
+/*
         <script src="https://maps.googleapis.com/maps/api/js" type="text/javascript"></script>
         <script>
             function initialize() {
@@ -51,7 +60,7 @@
             }
             google.maps.event.addDomListener(window, 'load', initialize);
         </script>
-
+*/
 
     </head>
     <body data-spy="scroll" data-target="#template-navbar">
@@ -90,30 +99,17 @@
 
         <!--== 5. Header ==-->
         <section id="header-slider" class="owl-carousel">
-            <div class="item">
-                <div class="container">
-                    <div class="header-content">
-                        <h1 class="header-title">BEST FOOD</h1>
-                        <p class="header-sub-title">create your own slogan</p>
-                    </div> <!-- /.header-content -->
+            @foreach ($sliders as $key=>$slider)
+                <div class="item">
+                    <div class="container">
+                        <div class="header-content">
+                            <h1 class="header-title">{{ $slider->title }}</h1>
+                            <p class="header-sub-title">{{ $slider->sub_title }}</p>
+                        </div> <!-- /.header-content -->
+                    </div>
                 </div>
-            </div>
-            <div class="item">
-                <div class="container">
-                    <div class="header-content">
-                        <h1 class="header-title">BEST SNACKS</h1>
-                        <p class="header-sub-title">create your own slogan</p>
-                    </div> <!-- /.header-content -->
-                </div>
-            </div>
-            <div class="item">
-                <div class="container">
-                    <div class="header-content text-right pull-right">
-                        <h1 class="header-title">BEST DRINKS</h1>
-                        <p class="header-sub-title">create your own slogan</p>
-                    </div> <!-- /.header-content -->
-                </div>
-            </div>
+            @endforeach
+
         </section>
 
 
@@ -916,7 +912,7 @@
                     <div class="col-md-6 col-md-offset-3">
                         <div class="copyright text-center">
                             <p>
-                                &copy; Copyright, 2015 <a href="#">Your Website Link.</a> Theme by <a href="http://themewagon.com/"  target="_blank">ThemeWagon</a>
+                                &copy; Copyright, {{ date('Y') }} <a href="{{ route('welcome') }}">Your Website Link.</a> Theme by <a href="http://themewagon.com/"  target="_blank">ThemeWagon</a>
                             </p>
                         </div>
                     </div>

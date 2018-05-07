@@ -23,32 +23,32 @@
                             <p>Sliders</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="./table.html">
+                    <li class="{{ Request::is('admin/table*')? 'active': '' }}">
+                        <a href="{{ route('slider.index') }}">
                             <i class="material-icons">content_paste</i>
                             <p>Table List</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="./typography.html">
+                    <li class="{{ Request::is('admin/typography*')? 'active': '' }}">
+                        <a href="{{ route('slider.index') }}">
                             <i class="material-icons">library_books</i>
                             <p>Typography</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="./icons.html">
+                    <li class="{{ Request::is('admin/icons*')? 'active': '' }}">
+                        <a href="{{ route('slider.index') }}">
                             <i class="material-icons">bubble_chart</i>
                             <p>Icons</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="./maps.html">
+                    <li class="{{ Request::is('admin/maps*')? 'active': '' }}">
+                        <a href="{{ route('slider.index') }}">
                             <i class="material-icons">location_on</i>
                             <p>Maps</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="./notifications.html">
+                    <li class="{{ Request::is('admin/notifications*')? 'active': '' }}">
+                        <a href="{{ route('slider.index') }}">
                             <i class="material-icons text-gray">notifications</i>
                             <p>Notifications</p>
                         </a>

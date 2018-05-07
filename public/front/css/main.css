@@ -16,7 +16,7 @@
 */
 
 /*=================================================
-||				Index 
+||				Index
 ==================================================*/
 /*
 |	1. Imports
@@ -44,12 +44,12 @@
 
 
 /*=================================================
-||				1. Imports 
+||				1. Imports
 ==================================================*/
 @import url(http://fonts.googleapis.com/css?family=Roboto:100,400);
 @import url(http://fonts.googleapis.com/css?family=Raleway:100,400,700);
 /*=================================================
-||				2. Global 
+||				2. Global
 ==================================================*/
 body
 {
@@ -65,12 +65,12 @@ body
 .btn:active.focus,
 .btn:active:focus,
 .btn:focus {
-  outline: none; 
+  outline: none;
 }
 
 .btn {
-  border-radius: 0; 
-  letter-spacing: 2px; 
+  border-radius: 0;
+  letter-spacing: 2px;
 }
 
 .btn:hover {
@@ -194,10 +194,10 @@ input.empty, textarea.empty {
 	margin-top: 50px;
 }*/
 /*=================================================
-||				3. Colors 
+||				3. Colors
 ==================================================*/
 /*=================================================
-||				4. Navigation 
+||				4. Navigation
 ==================================================*/
 .custom-navbar-default
 {
@@ -331,6 +331,7 @@ nav.shrink .navbar-toggle {
 	height: 80vh;
 	background-repeat: no-repeat;
 }
+/*
 .owl-carousel .owl-wrapper, .owl-carousel .owl-item:nth-child(1) .item
 {
 	background: url('../images/1.jpg');
@@ -347,6 +348,7 @@ nav.shrink .navbar-toggle {
 	background: url('../images/3.jpg');
 	background-size: cover;
 }
+*/
 .owl-theme .owl-controls .owl-buttons div
 {
 	position: absolute;
@@ -387,7 +389,7 @@ nav.shrink .navbar-toggle {
   	background-position-x: 15%;
   	background-position-y: 80%;
 }
-#about 
+#about
 {
 	margin-top: -10px;
 }
@@ -414,9 +416,9 @@ nav.shrink .navbar-toggle {
 
     background: url("../images/beer-bg1.png"), url("../images/beer-bg2.png");
     background-repeat: no-repeat, no-repeat;
-	
+
     background-position: 51% 58%, 75% 58%;
-	
+
     background-size: 300px 300px, 240px 240px;
 }
 /*=================================================
@@ -430,7 +432,7 @@ nav.shrink .navbar-toggle {
 ||				11. Our Bread
 ==================================================*/
 
-.bread .section-bg 
+.bread .section-bg
 {
 	/*background: url('../images/bread-bg1.png'), url('../images/bread-bg2.png');
 	background-position-x: 58%, 80%;
@@ -446,12 +448,12 @@ nav.shrink .navbar-toggle {
 /*=================================================
 ||				12. menu
 ==================================================*/
-.menu 
+.menu
 {
     padding: 50px 0px;
 }
 
-.menu-catagory h2 
+.menu-catagory h2
 {
     font-size: 51px;
     font-weight: 100;
@@ -463,7 +465,7 @@ nav.shrink .navbar-toggle {
     color: #8bc34a;
 }
 
-.half 
+.half
 {
     width: 50%;
     position: relative;
@@ -510,12 +512,12 @@ nav.shrink .navbar-toggle {
 	padding: 15% 15% 10% 15%;
 }
 
-.reservation-form 
+.reservation-form
 {
 	margin-top: -20px;
 }
 
-.opening-time 
+.opening-time
 {
 	background-color: rgb(139, 195, 74);
 	color: #fff;
@@ -524,7 +526,7 @@ nav.shrink .navbar-toggle {
 	border-radius: 4px;
 }
 
-.opening-time-title 
+.opening-time-title
 {
 	margin-top: 0px;
 	margin-bottom: 25px;
@@ -532,12 +534,12 @@ nav.shrink .navbar-toggle {
 	letter-spacing: 2px;
 }
 
-.opening-time p 
+.opening-time p
 {
     margin-bottom: 2px;
 }
 
-.opening-time h4 
+.opening-time h4
 {
     margin-bottom: 6px;
     margin-top: 12px;
@@ -551,7 +553,7 @@ nav.shrink .navbar-toggle {
 {
 	color: #fff;
 }
-.contact .section-title 
+.contact .section-title
 {
 	padding: 10% 20%;
 }
