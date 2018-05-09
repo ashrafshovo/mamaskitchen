@@ -29,10 +29,10 @@
                             <p>Categories</p>
                         </a>
                     </li>
-                    <li class="{{ Request::is('admin/typography*')? 'active': '' }}">
-                        <a href="{{ route('slider.index') }}">
+                    <li class="{{ Request::is('admin/item*')? 'active': '' }}">
+                        <a href="{{ route('item.index') }}">
                             <i class="material-icons">library_books</i>
-                            <p>Typography</p>
+                            <p>Items</p>
                         </a>
                     </li>
                     <li class="{{ Request::is('admin/icons*')? 'active': '' }}">
