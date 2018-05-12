@@ -44,7 +44,7 @@ class SliderController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'sub_title' => 'required',
-            'image' => 'required | image', //|mimes: jpeg, jpg, bmp, png
+            'image' => 'required | image'  //|mimes: jpeg, jpg, bmp, png
         ]);
         $image = $request->file('image');
         $slug = str_slug($request->title);
@@ -109,7 +109,7 @@ class SliderController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'sub_title' => 'required',
-            'image' => 'image', //|mimes: jpeg, jpg, bmp, png
+            'image' => 'image'  //|mimes: jpeg, jpg, bmp, png
         ]);
         $image = $request->file('image');
         $slug = str_slug($request->title);
@@ -122,6 +122,9 @@ class SliderController extends Controller
             if (!file_exists('uploads/slider')) {
                 mkdir('uploads/slider', 0777, true);
             }
+
+            unlink('uploads/slider/'.$slider->image); //delete file from the server
+
             $image->move('uploads/slider', $imagename);
         }
         else {
@@ -145,12 +148,13 @@ class SliderController extends Controller
     public function destroy($id)
     {
         //
-        $slider=Slider::find($id);
+        $slider = Slider::find($id);
         if (file_exists('uploads/slider/'.$slider->image))
         {
             unlink('uploads/slider/'.$slider->image); //delete file from the server
         }
         $slider->delete();
+
         return redirect()->back()->with('successMsg', 'Slider Successfully Deleted');
     }
 }

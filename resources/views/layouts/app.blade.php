@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <!-- Bootstrap core CSS     -->
+    <link href="{{ asset('back/img/icon.png') }}" rel="icon">
     <link href="{{ asset('back/css/bootstrap.min.css') }}" rel="stylesheet" />
     <!--  Material Dashboard CSS    -->
     <link href="{{ asset('back/css/material-dashboard.css?v=1.2.0') }}" rel="stylesheet" />

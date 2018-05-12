@@ -8,6 +8,7 @@
 
         <title>Mamma's Kitchen</title>
 
+        <link rel="icon" href="{{ asset('front/images/icons/icon.png') }}">
         <link rel="stylesheet" href="{{ asset('front/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('front/css/font-awesome.min.css') }}">
         <link rel="stylesheet" href="{{ asset('front/css/owl.carousel.css') }}">
