@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Route::get('/', 'HomeController@index')->name('welcome');
 
+Route::post('/reservation', 'ReservationController@reserve')->name('reservation');
+
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
@@ -37,4 +39,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth', 'namespace'=>'admin'], fu
     Route::resource('slider', 'SliderController');
     Route::resource('category', 'CategoryController');
     Route::resource('item', 'ItemController');
+    Route::get('reservation', 'ReservationController@index')->name('reservation.index');
 });
+
+Route::get('/temp', 'HomeController@temp');

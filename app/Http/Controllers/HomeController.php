@@ -32,4 +32,9 @@ class HomeController extends Controller
         $items = Item::all();
         return view('welcome', compact('sliders', 'categories', 'items'));
     }
+
+    public function temp()
+    {
+        return view('login');
+    }
 }

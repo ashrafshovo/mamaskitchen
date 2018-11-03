@@ -17,6 +17,8 @@
         <link rel="stylesheet" href="{{ asset('front/css/flexslider.css') }}">
         <link rel="stylesheet" href="{{ asset('front/css/pricing.css') }}">
         <link rel="stylesheet" href="{{ asset('front/css/main.css') }}">
+        <link rel="stylesheet" href="{{ asset('front/css/bootstrap-datetimepicker.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
         <style>
             @foreach ($sliders as $key=>$slider)
                 .owl-carousel .owl-wrapper, .owl-carousel .owl-item:nth-child({{ $key+1 }}) .item
@@ -659,28 +661,29 @@
                     <div class=" section-content">
                         <div class="row">
                             <div class="col-md-5 col-sm-6">
-                                <form class="reservation-form" method="post" action="reserve.php">
+                                <form class="reservation-form" method="post" action="{{ route('reservation') }}">
+                                        @csrf
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
-                                                <input type="text" class="form-control reserve-form empty iconified" name="name" id="name" required="required" placeholder="  &#xf007;  Name">
+                                                <input type="text" class="form-control reserve-form empty iconified" name="name" id="name"  placeholder="  &#xf007;  Name">
                                             </div>
                                             <div class="form-group">
-                                                <input type="email" name="email" class="form-control reserve-form empty iconified" id="email" required="required" placeholder="  &#xf1d8;  e-mail">
+                                                <input type="email" name="email" class="form-control reserve-form empty iconified" id="email"  placeholder="  &#xf1d8;  e-mail">
                                             </div>
                                         </div>
 
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
-                                                <input type="tel" class="form-control reserve-form empty iconified" name="phone" id="phone" required="required" placeholder="  &#xf095;  Phone">
+                                                <input type="tel" class="form-control reserve-form empty iconified" name="phone" id="phone"  placeholder="  &#xf095;  Phone">
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" class="form-control reserve-form empty iconified" name="datepicker" id="datepicker" required="required" placeholder="&#xf017;  Time">
+                                                <input type="text" class="form-control reserve-form empty iconified" name="dateandtime" id="datetimepicker1"  placeholder="&#xf017;  Time">
                                             </div>
                                         </div>
 
                                         <div class="col-md-12 col-sm-12">
-                                            <textarea type="text" name="message" class="form-control reserve-form empty iconified" id="message" rows="3" required="required" placeholder="  &#xf086;  We're listening"></textarea>
+                                            <textarea type="text" name="message" class="form-control reserve-form empty iconified" id="message" rows="3"  placeholder="  &#xf086;  We're listening"></textarea>
                                         </div>
 
                                         <div class="col-md-12 col-sm-12">
@@ -814,13 +817,37 @@
 
         <script src="{{ asset('front/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('front/js/owl.carousel.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('front/js/jquery.mixitup.min.js') }}" ></script>
+        <script src="{{ asset('front/js/jquery.mixitup.min.js') }}" ></script>
         <script src="{{ asset('front/js/wow.min.js') }}"></script>
         <script src="{{ asset('front/js/jquery.validate.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('front/js/jquery.hoverdir.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('front/js/jQuery.scrollSpeed.js') }}"></script>
+        <script src="{{ asset('front/js/jquery.hoverdir.js') }}"></script>
+        <script src="{{ asset('front/js/jQuery.scrollSpeed.js') }}"></script>
         <script src="{{ asset('front/js/script.js') }}"></script>
+        <script src="{{ asset('front/js/bootstrap-datetimepicker.min.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                
+                <script>
+                    toastr.error('{{ $error }}');
+                </script>
+
+            @endforeach
+        @endif
+
+        <script>
+            $(function (){
+                $('#datetimepicker1').datetimepicker({
+                    format: "dd MM yyyy - HH:11 p",
+                    showMeridian: true,
+                    autoclose: true,
+                    todayBtn: true
+                });
+            });
+        </script>
+
+        {!! Toastr::message() !!}
 
     </body>
 </html>

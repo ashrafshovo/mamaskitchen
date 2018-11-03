@@ -1,9 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<style type="text/css">
+    .mrgn{
+        margin-left: 50px;
+        margin-top: 50px;
+    }
+</style>
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 mrgn">
             <div class="card card-default">
                 <div class="card-header">Login</div>
 
