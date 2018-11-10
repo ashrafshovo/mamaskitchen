@@ -35,6 +35,18 @@
                             <p>Items</p>
                         </a>
                     </li>
+                    <li class="{{ Request::is('admin/reservation*')? 'active': '' }}">
+                        <a href="{{ route('reservation.index') }}">
+                            <i class="material-icons">chrome_reader_mode</i>
+                            <p>Reservations</p>
+                        </a>
+                    </li>
+                    <li class="{{ Request::is('admin/contact*')? 'active': '' }}">
+                        <a href="{{ route('contact.index') }}">
+                            <i class="material-icons">message</i>
+                            <p>Contact Message</p>
+                        </a>
+                    </li>
                     <li class="{{ Request::is('admin/icons*')? 'active': '' }}">
                         <a href="{{ route('slider.index') }}">
                             <i class="material-icons">bubble_chart</i>

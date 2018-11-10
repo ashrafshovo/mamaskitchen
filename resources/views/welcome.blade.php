@@ -25,6 +25,7 @@
                 {
                     background: url( {{ asset('uploads/slider/'.$slider->image) }} );
                     background-size: cover;
+                    margin-top: -10px;
                 }
             @endforeach
         </style>
@@ -101,7 +102,7 @@
 
 
         <!--== 5. Header ==-->
-        <section id="header-slider" class="owl-carousel">
+        <section id="header-slider" class="owl-carousel" style="margin-top: 77px;">
             @foreach ($sliders as $key=>$slider)
                 <div class="item">
                     <div class="container">
@@ -666,24 +667,24 @@
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
-                                                <input type="text" class="form-control reserve-form empty iconified" name="name" id="name"  placeholder="  &#xf007;  Name">
+                                                <input type="text" class="form-control reserve-form empty iconified" name="name" id="name" required="required" placeholder="  &#xf007;  Name">
                                             </div>
                                             <div class="form-group">
-                                                <input type="email" name="email" class="form-control reserve-form empty iconified" id="email"  placeholder="  &#xf1d8;  e-mail">
+                                                <input type="email" name="email" class="form-control reserve-form empty iconified" id="email" required="required" placeholder="  &#xf1d8;  e-mail">
                                             </div>
                                         </div>
 
                                         <div class="col-md-6 col-sm-6">
                                             <div class="form-group">
-                                                <input type="tel" class="form-control reserve-form empty iconified" name="phone" id="phone"  placeholder="  &#xf095;  Phone">
+                                                <input type="tel" class="form-control reserve-form empty iconified" name="phone" id="phone" required="required" placeholder="  &#xf095;  Phone">
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" class="form-control reserve-form empty iconified" name="dateandtime" id="datetimepicker1"  placeholder="&#xf017;  Time">
+                                                <input type="text" class="form-control reserve-form empty iconified" name="dateandtime" id="datetimepicker1" required="required" placeholder="&#xf017;  Time">
                                             </div>
                                         </div>
 
                                         <div class="col-md-12 col-sm-12">
-                                            <textarea type="text" name="message" class="form-control reserve-form empty iconified" id="message" rows="3"  placeholder="  &#xf086;  We're listening"></textarea>
+                                            <textarea type="text" name="message" class="form-control reserve-form empty iconified" id="message" rows="3" required="required" placeholder="  &#xf086;  We're listening"></textarea>
                                         </div>
 
                                         <div class="col-md-12 col-sm-12">
@@ -755,21 +756,22 @@
                 </div>
             </div>
         </section>
-
+{{-- 
         <div class="container-fluid">
             <div class="row">
                 <div id="map-canvas"></div>
             </div>
         </div>
 
-
+ --}}
 
         <section class="contact-form">
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
                         <div class="row">
-                             <form class="contact-form" method="post" action="contact.php">
+                             <form class="contact-form" method="post" action="{{ route('contact') }}">
+                                @csrf
 
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">

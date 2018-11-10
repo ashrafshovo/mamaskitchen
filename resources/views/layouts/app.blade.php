@@ -21,6 +21,7 @@
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+    
     @stack('css')
 </head>
 <body>
@@ -60,6 +61,8 @@
     <script src="{{ asset('back/js/material-dashboard.js?v=1.2.0') }}"></script>
     <!-- Material Dashboard DEMO methods, don't include it in your project! -->
     <script src="{{ asset('back/js/demo.js') }}"></script>
+
+
     <script type="text/javascript">
         $(document).ready(function() {
 
