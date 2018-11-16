@@ -808,7 +808,11 @@
                     <div class="col-md-6 col-md-offset-3">
                         <div class="copyright text-center">
                             <p>
-                                &copy; Copyright, {{ date('Y') }} <a href="{{ route('welcome') }}">Your Website Link.</a> Theme by <a href="http://themewagon.com/"  target="_blank">ThemeWagon</a>
+                                &copy; Copyright, {{-- date('Y') --}} 
+                                <script>
+                                    document.write(new Date().getFullYear());
+                                </script> 
+                                <a href="{{ route('welcome') }}">Mama's Kitchen.</a> Developed by <a href="http://github.com/ashrafshovo" target="_blank">Ashraf Hossan Shovo.</a> Theme by <a href="http://themewagon.com/"  target="_blank">ThemeWagon</a>
                             </p>
                         </div>
                     </div>

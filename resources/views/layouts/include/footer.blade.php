@@ -29,11 +29,11 @@
         </nav>
 
         <p class="copyright pull-right">
-            &copy;
+            &copy; Copyright, {{-- date('Y') --}}
             <script>
                 document.write(new Date().getFullYear())
             </script>
-            <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web.
+            <a href="http://www.creative-tim.com">Creative Tim</a> and Developed by <a href="http://github.com/ashrafshovo" target="_blank">Ashraf Hossan Shovo</a>.
         </p>
 
     </div>

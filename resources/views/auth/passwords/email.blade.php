@@ -1,11 +1,19 @@
 @extends('layouts.app')
 
+@section('title', 'Admin || Reset Password')
+
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+<style type="text/css">
+    .mrgn{
+        margin-left: 50px;
+        margin-top: 50px;
+    }
+</style>
+        <div class="col-md-8 mrgn">
             <div class="card card-default">
-                <div class="card-header">Reset Password</div>
+                <div class="card-header" data-background-color="purple">
+                    <h4 class="title">Reset Password</h4>
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -42,6 +50,5 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    
 @endsection

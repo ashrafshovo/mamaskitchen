@@ -2,6 +2,10 @@
 
 @section('title', 'Admin || Login')
 
+@push('css')
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+@endpush
+
 @section('content')
 <style type="text/css">
     .mrgn{
@@ -9,10 +13,11 @@
         margin-top: 50px;
     }
 </style>
-    <div class="row justify-content-center">
         <div class="col-md-8 mrgn">
             <div class="card card-default">
-                <div class="card-header">Login</div>
+                <div class="card-header" data-background-color="purple">
+                    <h4 class="title">Login</h4>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -57,7 +62,7 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     Login
                                 </button>
@@ -72,5 +77,8 @@
             </div>
         </div>
     </div>
-</div>
 @endsection
+
+@push('scripts')
+
+@endpush
