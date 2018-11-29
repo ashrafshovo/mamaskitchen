@@ -27,9 +27,9 @@
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Phone</th>
-                                    <th>Email</th>
+                                    <th style="width: 50px">Email</th>
                                     <th>Time & Date</th>
-                                    <th>Message</th>
+                                    {{-- <th>Message</th> --}}
                                     <th>Status</th>
                                     <th>Created At</th>
                                     <th>Actions</th>
@@ -42,7 +42,7 @@
                                             <td>{{ $reservation->phone }}</td>
                                             <td>{{ $reservation->email }}</td>
                                             <td>{{ $reservation->date_and_time }}</td>
-                                            <td>{{ $reservation->message }}</td>
+                                            {{-- <td>{{ $reservation->message }}</td> --}}
                                             <td>
                                                 @if($reservation->status == true)
                                                     <span class="label label-info">Confirmed</span>
@@ -50,7 +50,7 @@
                                                     <span class="label label-danger">Not Confirmed Yet</span>
                                                 @endif
                                             </td>
-                                            <td>{{ $reservation->created_at }}</td>
+                                            <td>{{ $reservation->created_at->diffForHumans() }}</td>
                                             
                                             <td>
 
