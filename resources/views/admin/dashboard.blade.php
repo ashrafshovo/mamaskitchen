@@ -131,7 +131,12 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-5 col-md-12">
+                @if($reservations->count() == 0)
+                    <div class="col-lg-12 col-md-12">
+                @else
+                    <div class="col-lg-5 col-md-12">
+                @endif
+
                     <div class="card card-nav-tabs">
                         <div class="card-header" data-background-color="purple">
                             <div class="nav-tabs-navigation">
@@ -349,6 +354,7 @@
                         </div>
                     </div>
                 </div>
+                @if($reservations->count()>0)
                 <div class="col-lg-7 col-md-12">
                     <div class="card">
                         <div class="card-header" data-background-color="orange">
@@ -404,6 +410,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
     </div>
