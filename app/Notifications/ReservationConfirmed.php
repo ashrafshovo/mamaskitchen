@@ -41,7 +41,7 @@ class ReservationConfirmed extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Your reservation has been conformed.')
+                    ->line('Your reservation has been confirmed.')
                     ->line('Thank you for using our application!');
     }
 
