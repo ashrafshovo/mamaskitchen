@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Category;
+use App\MenuCategory;
 
-class CategoryController extends Controller
+class MenuCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $categories = Category::all();
-        return view('admin.category.index', compact('categories'));
+        $categories = MenuCategory::all();
+        return view('admin.menucategory.index', compact('categories'));
     }
 
     /**
@@ -28,7 +28,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
-        return view('admin.category.create');
+        return view('admin.menucategory.create');
     }
 
     /**
@@ -44,12 +44,11 @@ class CategoryController extends Controller
             'name' => 'required'
         ]);
 
-        $category = New Category();
+        $category = new MenuCategory();
         $category->name = $request->name;
-        $category->slug = str_slug($request->name);
         $category->save();
 
-        return redirect()->route('category.index')->with('successMsg', 'Category Successfully Saved.');
+        return redirect()->route('menucategory.index')->with('successMsg', 'Category Successfully Saved.');
     }
 
     /**
@@ -72,8 +71,8 @@ class CategoryController extends Controller
     public function edit($id)
     {
         //
-        $category = Category::find($id);
-        return view('admin.category.edit', compact('category'));
+        $category = MenuCategory::find($id);
+        return view('admin.menucategory.edit', compact('category'));
     }
 
     /**
@@ -90,9 +89,8 @@ class CategoryController extends Controller
             'name' => 'required'
         ]);
 
-        $category = Category::find($id);
+        $category = MenuCategory::find($id);
         $category->name = $request->name;
-        $category->slug = str_slug($request->name);
         $category->save();
 
         return redirect()->route('category.index')->with('successMsg', 'Category Successfully Updated');
@@ -107,7 +105,7 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
-        Category::find($id)->delete();
+        MenuCategory::find($id)->delete();
         return redirect()->back()->with('successMsg', 'Category Successfully Deleted');
     }
 }
