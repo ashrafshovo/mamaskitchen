@@ -427,5 +427,5 @@
             $('#table').DataTable();
         });
     </script>
-    {!! Toastr::message() !!}
+    
 @endpush

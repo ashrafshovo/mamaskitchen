@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Elaravel">
+        <meta name="description" content="">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <link rel="shortcut icon" href="{{ asset('images/star.png') }}" type="favicon/ico" />
 
         <title>Mamma's Kitchen</title>
@@ -130,12 +134,11 @@
                         <div class="col-xs-12 col-sm-6 dis-table-cell">
                             <div class="section-content">
                                 <h2 class="section-content-title">About us</h2>
-                                <p class="section-content-para">
-                                    Astronomy compels the soul to look upward, and leads us from this world to another.  Curious that we spend more time congratulating people who have succeeded than encouraging people who have not. As we got further and further away, it [the Earth] diminished in size.
-                                </p>
-                                <p class="section-content-para">
-                                    beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.  Where ignorance lurks, so too do the frontiers of discovery and imagination.
-                                </p>
+                                @foreach($abouts as $about)
+                                    <p class="section-content-para">
+                                        {{ $about->paragraph }}
+                                    </p>
+                                @endforeach
                             </div> <!-- /.section-content -->
                         </div>
                     </div> <!-- /.row -->
@@ -171,7 +174,7 @@
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1">
                             <ul id="menu-pricing" class="menu-price">
-                                @foreach ($items as $key=>$item)
+                                @foreach ($items as $item)
                                     <li class="item" id="{{ $item->category->slug }}">
 
                                         <a href="#">
@@ -235,12 +238,11 @@
                         <div class="section-content">
                             <h2 class="section-content-title">Our Beer</h2>
                             <div class="section-description">
-                                <p class="section-content-para">
-                                    Astronomy compels the soul to look upward, and leads us from this world to another.  Curious that we spend more time congratulating people who have succeeded than encouraging people who have not. As we got further and further away, it [the Earth] diminished in size.
-                                </p>
-                                <p class="section-content-para">
-                                    beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.  Where ignorance lurks, so too do the frontiers of discovery and imagination.Astronomy compels the soul to look upward, and leads us from this world to another.  Curious that we spend more time congratulating people who have succeeded than encouraging people who have not. As we got further and further away, it [the Earth] diminished in size.
-                                </p>
+                                @foreach($beers as $beer)
+                                    <p class="section-content-para">
+                                        {{ $beer->paragraph }}
+                                    </p>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -283,12 +285,11 @@
                                 Our Bread
                             </h2>
                             <div class="section-description">
-                                <p class="section-content-para">
-                                    Astronomy compels the soul to look upward, and leads us from this world to another.  Curious that we spend more time congratulating people who have succeeded than encouraging people who have not. As we got further and further away, it [the Earth] diminished in size.
-                                </p>
-                                <p class="section-content-para">
-                                    beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.  Where ignorance lurks, so too do the frontiers of discovery and imagination.
-                                </p>
+                                @foreach($breads as $bread)
+                                    <p class="section-content-para">
+                                        {{ $bread->paragraph }}
+                                    </p>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -325,182 +326,37 @@
                 <div class="row menu">
                     <div class="col-md-10 col-md-offset-1 col-sm-9 col-sm-offset-2 col-xs-12">
                         <div class="row">
+                            @foreach($menucategories as $menu)
                             <div class="col-md-3 col-sm-6 col-xs-12">
                                 <div class="row">
                                     <div class="menu-catagory">
-                                        <h2>Bread</h2>
+                                        <h2>{{ $menu->name }}</h2>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">French Bread</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
+                                
+                                @foreach($featureddishes as $dish)
+                                    @if($dish->menu_category->name == $menu->name)
+                                        <div class="row">
+                                            <div class="menu-item">
+                                                <h3 class="menu-title">{{ $dish->title }}</h3>
+                                                <p class="menu-about">{{ $dish->about }}</p>
 
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$149.00</p>
+                                                <div class="menu-system">
+                                                    <div class="half">
+                                                        <p class="per-head">
+                                                            <span><i class="fa fa-user"></i></span>{{ $dish->peo }}:{{ $dish->ple }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="half">
+                                                        <p class="price">${{ $dish->price }}.00</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">Italian Bread</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
-
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$149.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">Regular Bread</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
-
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$149.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                    @endif
+                                @endforeach
                             </div>
-
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="row">
-                                    <div class="menu-catagory">
-                                        <h2>Drinks</h2>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">Regular Tea</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
-
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$20.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">Garlic Tea</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
-
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$30.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">Black Coffee</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
-
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$40.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="row">
-                                    <div class="menu-catagory">
-                                        <h2>Meat</h2>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">Bacon</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
-
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$70.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">Sausage</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
-
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$50.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">Chicken Balls</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
-
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$90.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
 
                             <div class="col-md-3 col-sm-6 col-xs-12">
                                 <div class="row">
@@ -508,58 +364,25 @@
                                         <h2>Special</h2>
                                     </div>
                                 </div>
+                                @foreach($specialdishes as $special)
                                 <div class="row">
                                     <div class="menu-item">
-                                        <h3 class="menu-title">Chicken Balls</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
+                                        <h3 class="menu-title">{{ $special->title }}</h3>
+                                        <p class="menu-about">{{ $special->about }}</p>
 
                                         <div class="menu-system">
                                             <div class="half">
                                                 <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
+                                                    <span><i class="fa fa-user"></i></span>{{ $special->peo }}:{{ $special->ple }}
                                                 </p>
                                             </div>
                                             <div class="half">
-                                                <p class="price">$90.00</p>
+                                                <p class="price">${{ $special->price }}.00</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">Bacon</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
-
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$70.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="menu-item">
-                                        <h3 class="menu-title">Sausage</h3>
-                                        <p class="menu-about">Astronomy compels the soul</p>
-
-                                        <div class="menu-system">
-                                            <div class="half">
-                                                <p class="per-head">
-                                                    <span><i class="fa fa-user"></i></span>1:1
-                                                </p>
-                                            </div>
-                                            <div class="half">
-                                                <p class="price">$50.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
 
                         <div id="moreMenuContent"></div>
@@ -585,39 +408,11 @@
                             <div class="flexslider-container">
                                 <div class="flexslider">
                                     <ul class="slides">
-                                        <li>
-                                            <img src="{{ asset('front/images/menu-gallery/menu1.png') }}" />
-                                        </li>
-                                        <li>
-                                            <img src="{{ asset('front/images/menu-gallery/menu2.jpg') }}" />
-                                        </li>
-                                        <li>
-                                            <img src="{{ asset('front/images/menu-gallery/menu3.png') }}" />
-                                        </li>
-                                        <li>
-                                            <img src="{{ asset('front/images/menu-gallery/menu4.jpg') }}" />
-                                        </li>
-                                        <li>
-                                            <img src="{{ asset('front/images/menu-gallery/menu5.jpg') }}" />
-                                        </li>
-                                        <li>
-                                            <img src="{{ asset('front/images/menu-gallery/menu6.jpg') }}" />
-                                        </li>
-                                        <li>
-                                            <img src="{{ asset('front/images/menu-gallery/menu7.jpg') }}" />
-                                        </li>
-                                        <li>
-                                            <img src="{{ asset('front/images/menu-gallery/menu8.jpg') }}" />
-                                        </li>
-                                        <li>
-                                            <img src="{{ asset('front/images/menu-gallery/menu9.jpg') }}" />
-                                        </li>
-                                        <li>
-                                            <img src="{{ asset('front/images/menu-gallery/menu10.jpg') }}" />
-                                        </li>
-                                        <li>
-                                            <img src="{{ asset('front/images/menu-gallery/menu11.jpg') }}" />
-                                        </li>
+                                        @foreach($havelooksliders as $slider)
+                                            <li>
+                                                <img src="{{ asset('uploads/haveslider/'.$slider->image) }}" />
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -746,10 +541,10 @@
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3">
                             <ul class="center-block">
-                                <li><a href="#" class="fb"></a></li>
-                                <li><a href="#" class="twit"></a></li>
-                                <li><a href="#" class="g-plus"></a></li>
-                                <li><a href="#" class="link"></a></li>
+                                <li><a href="{{ $social->facebook }}" class="fb" target="_blank"></a></li>
+                                <li><a href="{{ $social->twitter }}" class="twit" target="_blank"></a></li>
+                                <li><a href="{{ $social->google_plus }}" class="g-plus" target="_blank"></a></li>
+                                <li><a href="{{ $social->linkedin }}" class="link" target="_blank"></a></li>
                             </ul>
                         </div>
                     </div>
@@ -812,7 +607,7 @@
                                 <script>
                                     document.write(new Date().getFullYear());
                                 </script> 
-                                <a href="{{ route('welcome') }}">Mama's Kitchen.</a> Developed by <a href="http://ashrafshovo.github.io" target="_blank">Ashraf Hossan Shovo.</a> Theme by <a href="http://themewagon.com/"  target="_blank">ThemeWagon</a>
+                                <a href="{{ route('welcome') }}">{{ $footers->app_name }}.</a> Developed by <a href="{{ $footers->developer_link }}" target="_blank">{{ $footers->developer_name }}.</a> Theme by <a href="{{ $footers->theme_by }}"  target="_blank">{{ $footers->theme_by_name }}</a>
                             </p>
                         </div>
                     </div>

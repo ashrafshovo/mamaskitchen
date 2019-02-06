@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Mamaskitchen">
+    <meta name="description" content="">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -60,7 +62,9 @@
     <!-- Material Dashboard javascript methods -->
     <script src="{{ asset('back/js/material-dashboard.js?v=1.2.0') }}"></script>
     <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-    <script src="{{ asset('back/js/demo.js') }}"></script>
+    {{-- <script src="{{ asset('back/js/demo.js') }}"></script> --}}
+    <!-- Custom javascript methods -->
+    <script src="{{ asset('back/js/custom-demo.js') }}"></script>
 
 
     <script type="text/javascript">
@@ -71,6 +75,19 @@
 
         });
     </script>
+
+    @if ($errors->any())
+
+        @foreach ($errors->all() as $error)
+                
+            <script>
+                toastr.error('{{ $error }}');
+            </script>
+
+        @endforeach
+    @endif
+
+    {!! Toastr::message() !!}
 
     @stack('scripts')
     </body>
