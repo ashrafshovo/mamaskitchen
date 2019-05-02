@@ -11,7 +11,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    
+                    <a href="{{ route('social.edit', $social->id) }}" class="btn btn-info"><i class="material-icons">edit</i></a>
+
                     @include('layouts.include.msg')
 
                     <div class="card">
@@ -19,27 +20,30 @@
                             <h4 class="title">Social Links</h4>
                             <!-- <p class="category">Here is a subtitle for this table</p> -->
                         </div>
+
                         <div class="card-content table-responsive">
                             <table id="table" class="table" cellspacing="0" width="100%">
                                 <thead class="text-primary">
-                                    <th>Facebook</th>
-                                    <th>Twitter</th>
-                                    <th>Google Plus</th>
-                                    <th>LinkedIn</th>
-                                    <th>Actions</th>
+                                    <th>Social Provider</th>
+                                    <th>Social Links</th>
                                 </thead>
                                 <tbody>
-                                    @foreach ( $social as $key=>$social )
                                         <tr>
-                                            <td>{{ $social->facebook }}</td>
-                                            <td>{{ $social->twitter }}</td>
-                                            <td>{{ $social->google_plus }}</td>
-                                            <td>{{ $social->linkedin }}</td>
-                                            <td>
-                                                <a href="{{ route('social.edit', $social->id) }}" class="btn btn-info btn-sm"><i class="material-icons">edit</i></a>
-                                            </td>
+                                            <td>Facebook</td>
+                                            <td><a  target="_blank" href="{{ $social->facebook }}">{{ $social->facebook }}</a></td>
                                         </tr>
-                                    @endforeach
+                                        <tr>
+                                            <td>Twitter</td>
+                                            <td><a  target="_blank" href="{{ $social->twitter }}">{{ $social->twitter }}</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Google Plus</td>
+                                            <td><a  target="_blank" href="{{ $social->google_plus }}">{{ $social->google_plus }}</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>LinkedIn</td>
+                                            <td><a  target="_blank" href="{{ $social->linkedin }}">{{ $social->linkedin }}</a></td>
+                                        </tr>
                                 </tbody>
                             </table>
                         </div>

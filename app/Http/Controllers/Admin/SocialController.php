@@ -16,7 +16,7 @@ class SocialController extends Controller
     public function index()
     {
         //
-        $social = Social::all();
+        $social = Social::find(1);
 
         return view('admin.social.index', compact('social'));
     }
