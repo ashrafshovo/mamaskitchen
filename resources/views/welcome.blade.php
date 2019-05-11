@@ -630,9 +630,11 @@
         @if ($errors->any())
             @foreach ($errors->all() as $error)
                 
-                <script>
+                {{-- <script>
                     toastr.error('{{ $error }}');
-                </script>
+                </script> --}}
+
+                {{ Toastr()->error( $error, 'Error', ["positionClass" => "toast-top-right"]) }}
 
             @endforeach
         @endif
