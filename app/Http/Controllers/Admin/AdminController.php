@@ -20,6 +20,7 @@ class AdminController extends Controller
     {
         //
         $users = User::all();
+        //echo json_encode($users);
         return view('admin.admin.index', compact('users'));
     }
 
