@@ -50,14 +50,14 @@
 
                     <li class="{{ Request::is('admin/beer*')? 'active': '' }}">
                         <a href="{{ route('beer.index') }}">
-                            <i class="material-icons">drink</i>
+                            <i class="material-icons">local_drink</i>
                             <p>Beer</p>
                         </a>
                     </li>
 
                     <li class="{{ Request::is('admin/bread*')? 'active': '' }}">
                         <a href="{{ route('bread.index') }}">
-                            <i class="material-icons">food</i>
+                            <i class="material-icons">fastfood</i>
                             <p>Bread</p>
                         </a>
                     </li>
@@ -81,13 +81,13 @@
                     </li>
                     <li class="{{ Request::is('admin/featureddish*')? 'active': '' }}">
                         <a href="{{ route('featureddish.index') }}">
-                            <i class="material-icons">menu-category</i>
+                            <i class="material-icons">dehaze</i>
                             <p>Featured Dish</p>
                         </a>
                     </li>
                     <li class="{{ Request::is('admin/social*')? 'active': '' }}">
                         <a href="{{ route('social.index') }}">
-                            <i class="material-icons">social</i>
+                            <i class="material-icons">public</i>
                             <p>Social</p>
                         </a>
                     </li>

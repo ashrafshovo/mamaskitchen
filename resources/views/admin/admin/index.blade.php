@@ -37,7 +37,7 @@
                                             <td><img class="img-responsive img-thumbnail" style="width: 100px;height: 100px;" src="{{ asset('uploads/user/'. $user->image) }}"></td>
                                             <td>{{ $user->created_at->diffForHumans() }}</td>
                                             <td>
-                                                <a href="{{ route('admin.show', $user->id) }}" class="btn btn-primary btn-sm"><i class="material-icons">view</i></a>
+                                                <a href="{{ route('admin.show', $user->id) }}" class="btn btn-primary btn-sm"><i class="material-icons">visibility</i></a>
                                                 @if(Auth::user()->role == "Admin" && Auth::user() != $user)
                                                     <a href="{{ route('admin.edit', $user->id) }}" class="btn btn-info btn-sm"><i class="material-icons">edit</i></a>
 
