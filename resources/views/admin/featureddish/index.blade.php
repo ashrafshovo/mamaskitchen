@@ -71,7 +71,7 @@
                                                         document.getElementById('status-from-{{ $item->id }}').submit();
                                                     } else {
                                                         event.preventDefault();
-                                                    }"><i class="material-icons">undone</i></button>
+                                                    }"><i class="material-icons">undo</i></button>
 
                                                 @endif
 
