@@ -32,7 +32,7 @@
                                             <td>{{ $bread->paragraph }}</td>
                                             <td>{{ $bread->updated_at->diffForHumans() }}</td>
                                             <td>
-                                                <a href="{{ route('bread.show', $bread->id) }}" class="btn btn-primary btn-sm"><i class="material-icons">view</i></a>
+                                                <a href="{{ route('bread.show', $bread->id) }}" class="btn btn-primary btn-sm"><i class="material-icons">visibility</i></a>
                                                 <a href="{{ route('bread.edit', $bread->id) }}" class="btn btn-info btn-sm"><i class="material-icons">edit</i></a>
                                             </td>
                                         </tr>

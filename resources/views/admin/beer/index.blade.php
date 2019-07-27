@@ -32,7 +32,7 @@
                                             <td>{{ $beer->paragraph }}</td>
                                             <td>{{ $beer->updated_at->diffForHumans() }}</td>
                                             <td>
-                                                <a href="{{ route('beer.show', $beer->id) }}" class="btn btn-primary btn-sm"><i class="material-icons">view</i></a>
+                                                <a href="{{ route('beer.show', $beer->id) }}" class="btn btn-primary btn-sm"><i class="material-icons">visibility</i></a>
                                                 <a href="{{ route('beer.edit', $beer->id) }}" class="btn btn-info btn-sm"><i class="material-icons">edit</i></a>
                                             </td>
                                         </tr>

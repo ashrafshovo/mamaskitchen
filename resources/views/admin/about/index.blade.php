@@ -32,7 +32,7 @@
                                             <td>{{ $about->paragraph }}</td>
                                             <td>{{ $about->updated_at->diffForHumans() }}</td>
                                             <td>
-                                                <a href="{{ route('about.show', $about->id) }}" class="btn btn-primary btn-sm"><i class="material-icons">view</i></a>
+                                                <a href="{{ route('about.show', $about->id) }}" class="btn btn-primary btn-sm"><i class="material-icons">visibility</i></a>
                                                 <a href="{{ route('about.edit', $about->id) }}" class="btn btn-info btn-sm"><i class="material-icons">edit</i></a>
                                             </td>
                                         </tr>
