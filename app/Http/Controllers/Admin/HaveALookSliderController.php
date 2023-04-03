@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\HaveALookSlider;
-use Carbon\Carbon;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\HaveALookSlider;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class HaveALookSliderController extends Controller
 {
@@ -47,7 +49,7 @@ class HaveALookSliderController extends Controller
         ]);
 
         $image = $request->file('image');
-        $slug = str_slug($request->title);
+        $slug = Str::slug($request->title);
 
         if (isset ($image)) {
             $currentDate = Carbon::now()->toDateString();
@@ -110,7 +112,7 @@ class HaveALookSliderController extends Controller
         ]);
 
         $image = $request->file('image');
-        $slug = str_slug($request->title);
+        $slug = Str::slug($request->title);
 
         $slider = HaveALookSlider::find($id);
 
@@ -121,10 +123,10 @@ class HaveALookSliderController extends Controller
             if (!file_exists('uploads/haveslider')) {
                 mkdir('uploads/slider', 0777, true);
             }
-
-            unlink('uploads/haveslider/'.$slider->image); //delete file from the server
-
-            $image->move('uploads/slider', $imagename);
+            if(file_exists('uploads/haveslider/'.$slider->image)){
+                unlink('uploads/haveslider/'.$slider->image); //delete file from the server
+            }
+            $image->move('uploads/haveslider', $imagename);
         }
         else {
             $imagename = $slider->image;

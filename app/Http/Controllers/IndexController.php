@@ -27,9 +27,9 @@ class IndexController extends Controller
         $havelooksliders = HaveAlookSlider::all();
         $menucategories = MenuCategory::all();
         $featureddishes = FeaturedDish::all();
-        $specialdishes = 0;//FeaturedDish::where('status', true)
-                        //->orderBy('price', 'DESC')
-                        //->get();
+        $specialdishes = FeaturedDish::where('status', true)
+                        ->orderBy('price', 'DESC')
+                        ->get();
         $abouts = About::all();
         $beers = Beer::all();
         $breads = Bread::all();

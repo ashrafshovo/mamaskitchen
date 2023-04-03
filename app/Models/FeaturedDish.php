@@ -9,6 +9,6 @@ class FeaturedDish extends Model
     //
     public function menu_category()
     {
-        return $this->belongsTo('App\MenuCategory');
+        return $this->belongsTo('App\Models\MenuCategory');
     }
 }

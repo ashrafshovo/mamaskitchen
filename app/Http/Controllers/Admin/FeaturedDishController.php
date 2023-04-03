@@ -134,6 +134,8 @@ class FeaturedDishController extends Controller
     {
         //
         FeaturedDish::find($id)->delete();
+
+        
         return redirect()->back()->with('successMsg', 'Featured Dish Successfully Deleted');
     }
 
@@ -146,9 +148,15 @@ class FeaturedDishController extends Controller
 
         $reservation->save();
 
-        Toastr::success('Feeatured Dish specialed successfully.', 'Success', ["positionClass" =>  "toast-top-right"]);
+        Toastr::success('Feeatured Dish specialed successfully.', 'Success', 
+            [
+                "positionClass" =>  "toast-top-right",
+                "closeButton" => true,
+                "progressBar" =>true
+            ]);
+
         
-        return redirect()->back();
+        return back();
     }
 
     public function unstatus($id)
@@ -160,8 +168,13 @@ class FeaturedDishController extends Controller
 
         $reservation->save();
 
-        Toastr::success('Feeatured Dish unspecialed successfully.', 'Success', ["positionClass" =>  "toast-top-right"]);
+        Toastr::success('Feeatured Dish unspecialed successfully.', 'Success', 
+            [
+                "positionClass" =>  "toast-top-right",
+                "closeButton" => true,
+                "progressBar" =>true
+            ]);
         
-        return redirect()->back();
+        return back();
     }
 }

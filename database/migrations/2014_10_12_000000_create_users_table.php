@@ -20,8 +20,10 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('image')->default('default.png');
             $table->enum('role', ['admin', 'moderator', 'editor']);
-            $table->longText('about')->default('N/A');
+            $table->longText('about');
             $table->rememberToken();
+            /*$table->timestamps('email_verified_at');*/
+            $table->boolean('confirm_email')->default('0');
             $table->timestamps();
         });
     }

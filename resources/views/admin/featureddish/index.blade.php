@@ -4,6 +4,7 @@
 
 @push('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     
 @endpush
 
@@ -12,9 +13,12 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <a href="{{ route('featureddish.create') }}" class="btn btn-primary">Add New Featured Dish</a>
 
                     @include('layouts.include.msg')
+
+                    <a href="{{ route('featureddish.create') }}" class="btn btn-primary">Add New Featured Dish</a>
+
+                    
 
                     <div class="card">
                         <div class="card-header" data-background-color="purple">
@@ -104,9 +108,15 @@
 @push('scripts')
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" charset="utf-8"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js" charset="utf-8"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function() {
             $('#table').DataTable();
         });
     </script>
+    
+    {!! Toastr::message() !!}
+    
 @endpush

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -46,7 +47,7 @@ class CategoryController extends Controller
 
         $category = New Category();
         $category->name = $request->name;
-        $category->slug = str_slug($request->name);
+        $category->slug = Str::slug($request->name);
         $category->save();
 
         return redirect()->route('category.index')->with('successMsg', 'Category Successfully Saved.');
@@ -92,7 +93,7 @@ class CategoryController extends Controller
 
         $category = Category::find($id);
         $category->name = $request->name;
-        $category->slug = str_slug($request->name);
+        $category->slug = Str::slug($request->name);
         $category->save();
 
         return redirect()->route('category.index')->with('successMsg', 'Category Successfully Updated');

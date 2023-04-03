@@ -27,7 +27,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Name</label>
-                                            <input type="text" class="form-control" name="Name" value="{{ $user->name }}">
+                                            <input type="text" class="form-control" name="name" value="{{ $user->name }}">
                                         </div>
                                     </div>
                                 </div>
@@ -35,7 +35,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Email</label>
-                                            <input type="email" class="form-control" name="email" value="{{ $user->email }}">
+                                            <input type="email" class="form-control" name="email" value="{{ $user->email }}" readonly>
                                         </div>
                                     </div>
                                 </div>

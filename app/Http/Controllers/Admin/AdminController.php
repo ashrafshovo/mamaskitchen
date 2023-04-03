@@ -5,9 +5,16 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Notifications\AdminEmailConfirmed;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+use Auth;
+use Mail;
+
+use App\Mail\AdminEmailConfirmed;
+//use App\Notifications\AdminEmailConfirmed;
+
 
 class AdminController extends Controller
 {
@@ -46,22 +53,35 @@ class AdminController extends Controller
         //
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'email|required|unique:users'
+            'email' => 'email|required|unique:users',
+            'password' => 'required|string|min:8',
         ]);
         
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $token = str_random(15);
-        $user->token = $token;
+        $user->password = Hash::make($request->Password);
+        $token = Str::random(15);
+        $user->remember_token = $token;
         $user->about = 'N/A';
         $user->save();
 
-        Notification::send($token, new AdminEmailConfirmed($request->email));
+        //Notification::send($token, new AdminEmailConfirmed($request->email));
+        
+        //Notification::route('confirm', $request->email)->notify(new AdminEmailConfirmed($request->email));
 
-        Toastr::success('Admin added successfully.', 'Success', ["positionClass" =>  "toast-top-right"]);
+        Mail::to($request->email)->send(new AdminEmailConfirmed($user));
 
-        return redirect()->route('admin.index');
+        //dd("done");
+
+        Toastr::success('Admin added successfully.', 'Success', 
+            [
+                "positionClass" =>  "toast-top-right",
+                "closeButton" => true,
+                "progressBar" => true
+            ]);
+
+        return redirect(route('admin.index'));
     }
 
     /**
@@ -73,9 +93,15 @@ class AdminController extends Controller
     public function show($id)
     {
         //
-        $user = User::find($id);
+        if(Auth::user()->id == $id){
+            return redirect()->route('admin.profile');
+        }
+        else{
+            $user = User::find($id);
 
-        return view('admin.admin.view', compact('user'));
+            return view('admin.admin.view', compact('user'));    
+        }
+        
     }
 
     /**
@@ -103,7 +129,7 @@ class AdminController extends Controller
         //
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'email|required|unique:users'
+            'email' => 'email|required'
         ]);
         
         $user = User::find($id);
@@ -111,9 +137,9 @@ class AdminController extends Controller
         $user->email = $request->email;
         $user->save();
 
-        Toastr::success('Admin successfully updated.', 'Success', ["positionClass" =>  "toast-top-right"]);
+        //Toastr::success('Admin successfully updated.', 'Success', ["positionClass" =>  "toast-top-right"]);
 
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.index')->with('successMsg', 'Admin Successfully Updated');;
     }
 
     /**
@@ -127,26 +153,36 @@ class AdminController extends Controller
         //
         User::find($id)->delete();
 
-        Toastr::success('Admin deleted successfully.', 'Success', ["positionClass" =>  "toast-top-right"]);
+        //Toastr::success('Admin deleted successfully.', 'Success', ["positionClass" =>  "toast-top-right"]);
 
-        return redirect()->back();
+        return redirect()->back()->with('successMsg', 'Admin Successfully Deleted');;
     }
 
     public function confirm($token)
     {
-        $user = User::where('token', $token)->first();
+        $user = User::where('remember_token', $token)->first();
 
         if (!is_null($user)) {
             $user->confirm_email=1;
-            //$user->token = '';
             $user->save();
 
-            Toastr::success('Your email has been verified.', 'Success', ["positionClass" =>  "toast-top-right"]);
+            Toastr::success('Your email has been verified.', 'Success', 
+                [
+                    "positionClass" =>  "toast-top-right",
+                    "closeButton" =>true,
+                    "progressBar" =>true
+                ]);
 
-            return view('password', compact('token'));
+            return view('admin.password', compact('user'));
 
         }
-        Toastr::error('Someting went wrong.', 'Error', ["positionClass" =>  "toast-top-right"]);
+
+        Toastr::error('Someting went wrong.', 'Error', 
+            [
+                "positionClass" =>  "toast-top-right",
+                "closeButton" =>true,
+                "progressBar" =>true
+            ]);
 
         return redirect(route('login'));
     }
@@ -155,17 +191,39 @@ class AdminController extends Controller
     {
         $this->validate($request, [
             'email' => 'required|string|email|max:255',
-            'password' => 'required|string|min:6|confirmed'
+            'password' => 'required|string|min:8|confirmed',
+            'remember_token' => 'required|string'
         ]);
-        
-        $user = User::where('token', $token)->first();
+
+        $user = User::where('remember_token', $token)->first();
+
         //dd($user);
-        $user->password = bcrypt($request->password);
-        $user->token  = '';
-        $user->save();
+        if($user){
+            $user->password = Hash::make($request->password);
 
-        Toastr::success('Password successfully saved.', 'Success', ["positionClass" =>  "toast-top-right"]);
+            $user->remember_token  = '';
+            $user->save();
 
-        return redirect()->route('login');
+
+            Toastr::success('Password successfully saved.', 'Success', 
+                [
+                    "positionClass" =>  "toast-top-right",
+                    "closeButton" =>true,
+                    "progressBar" =>true
+                ]);
+
+            return redirect(route('login'));
+
+        }
+        else{
+            Toastr::error('Someting went wrong.', 'Error', 
+                [
+                    "positionClass" =>  "toast-top-right",
+                    "closeButton" =>true,
+                    "progressBar" =>true
+                ]);
+
+            return redirect(route('login'));
+        }
     }
 }

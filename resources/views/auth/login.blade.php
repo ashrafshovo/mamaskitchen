@@ -1,15 +1,21 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('title', 'Mamma\'s Kitchen || Login')
+
+@push('css')
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+@endpush
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+        <div class="col-md-6">
+            <div class="card" style="height: 400px !important;">
+                <div class="card-header">
+                    <h4 class="title">{{ __('Login') }}</h4>
+                </div>
 
-                <div class="card-body">
+                <div class="card-body mt-5">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -55,7 +61,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-dark w-50">
                                     {{ __('Login') }}
                                 </button>
 
@@ -65,6 +71,7 @@
                                     </a>
                                 @endif
                             </div>
+                            {{-- <label class="alert alert-danger">Danger</label> --}}
                         </div>
                     </form>
                 </div>
@@ -73,3 +80,10 @@
     </div>
 </div>
 @endsection
+
+@push('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    {!! Toastr::message() !!}
+
+@endpush

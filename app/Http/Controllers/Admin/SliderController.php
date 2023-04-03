@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Slider;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
+use App\Models\Slider;
+use Carbon\Carbon;
 
 class SliderController extends Controller
 {
@@ -47,7 +48,7 @@ class SliderController extends Controller
             'image' => 'required | image'  //|mimes: jpeg, jpg, bmp, png
         ]);
         $image = $request->file('image');
-        $slug = str_slug($request->title);
+        $slug = Str::slug($request->title);
 
         if (isset ($image)) {
             $currentDate = Carbon::now()->toDateString();
@@ -112,7 +113,7 @@ class SliderController extends Controller
             'image' => 'image'  //|mimes: jpeg, jpg, bmp, png
         ]);
         $image = $request->file('image');
-        $slug = str_slug($request->title);
+        $slug = Str::slug($request->title);
         $slider = Slider::find($id);
 
         if (isset ($image)) {
@@ -123,8 +124,9 @@ class SliderController extends Controller
                 mkdir('uploads/slider', 0777, true);
             }
 
-            unlink('uploads/slider/'.$slider->image); //delete file from the server
-
+            if(file_exists('uploads/slider/'.$slider->image)){
+                unlink('uploads/slider/'.$slider->image); //delete file from the server
+            }
             $image->move('uploads/slider', $imagename);
         }
         else {

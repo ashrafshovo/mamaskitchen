@@ -1,4 +1,4 @@
-<div class="sidebar" data-color="purple" data-image="{{ asset('back/img/sidebar-1.jpg') }}">
+    <div class="sidebar" data-color="purple" data-image="{{ asset('back/img/sidebar-1.jpg') }}">
             <!--
             Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
@@ -6,7 +6,7 @@
             -->
             <div class="logo">
                 <a href="{{ route('admin.dashboard') }}" class="simple-text">
-                    Mama's Kitchen
+                    Admin Panel
                 </a>
             </div>
             <div class="sidebar-wrapper">
@@ -17,9 +17,15 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
+                    <li class="{{ Request::is('admin/profile*')? 'active': '' }}">
+                        <a href="{{ route('admin.profile') }}">
+                            <i class="material-icons">account_circle</i>
+                            <p>Profile</p>
+                        </a>
+                    </li>
                     <li class="{{ Request::is('admin/admin*')? 'active': '' }}">
                         <a href="{{ route('admin.index') }}">
-                            <i class="material-icons">account_circle</i>
+                            <i class="material-icons">manage_accounts</i>
                             <p>Admin</p>
                         </a>
                     </li>

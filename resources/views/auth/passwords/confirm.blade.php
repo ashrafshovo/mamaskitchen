@@ -2,12 +2,21 @@
 
 @section('title', 'Mamma\'s Kitchen || Confirm Password')
 
+@push('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+@endpush
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Confirm Password') }}</div>
+                <div class="card-header">
+                    <h4 class="title">
+                        {{ __('Confirm Password') }}
+                    </h4>
+                </div>
 
                 <div class="card-body">
                     {{ __('Please confirm your password before continuing.') }}
@@ -31,7 +40,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-dark">
                                     {{ __('Confirm Password') }}
                                 </button>
 
@@ -49,3 +58,8 @@
     </div>
 </div>
 @endsection
+
+
+@push('js')
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+@endpush

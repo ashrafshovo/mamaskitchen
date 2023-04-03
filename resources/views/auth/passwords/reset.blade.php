@@ -2,12 +2,21 @@
 
 @section('title', 'Mamma\'s Kitchen || Reset Password')
 
+@push('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+@endpush
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+                <div class="card-header">
+                    <h4 class="title">
+                        {{ __('Reset Password') }}        
+                    </h4>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('password.update') }}">
@@ -53,7 +62,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-dark">
                                     {{ __('Reset Password') }}
                                 </button>
                             </div>
@@ -65,3 +74,7 @@
     </div>
 </div>
 @endsection
+
+@push('js')
+
+@endpush

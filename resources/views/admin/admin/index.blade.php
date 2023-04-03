@@ -4,6 +4,7 @@
 
 @push('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 @endpush
 
 @section('content')
@@ -11,8 +12,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <a href="{{ route('admin.create') }}" class="btn btn-primary">Add New</a>
 
+                    @include('layouts.include.msg')
+
+                    <a href="{{ route('admin.create') }}" class="btn btn-primary">Add New</a>
+                    
                     <div class="card">
                         <div class="card-header" data-background-color="purple">
                             <h4 class="title">All Admin</h4>
@@ -39,7 +43,7 @@
                                                 <td>{{ $user->created_at->diffForHumans() }}</td>
                                                 <td>
                                                     <a href="{{ route('admin.show', $user->id) }}" class="btn btn-primary btn-sm"><i class="material-icons">visibility</i></a>
-                                                    @if(Auth::user()->role == "Admin" && Auth::user() != $user)
+                                                    @if(Auth::user()->role == "admin" && Auth::user() != $user)
                                                         <a href="{{ route('admin.edit', $user->id) }}" class="btn btn-info btn-sm"><i class="material-icons">edit</i></a>
 
                                                         
@@ -72,6 +76,7 @@
 @endsection
 
 @push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" charset="utf-8"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js" charset="utf-8"></script>
     <script type="text/javascript">
@@ -79,4 +84,5 @@
             $('#table').DataTable();
         });
     </script>
+    {!! Toastr::message() !!}
 @endpush

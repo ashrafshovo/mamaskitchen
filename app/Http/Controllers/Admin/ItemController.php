@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\Models\Item;
 use App\Models\Category;
+use Illuminate\Support\Str;
 
 class ItemController extends Controller
 {
@@ -54,7 +55,7 @@ class ItemController extends Controller
         ]);
 
         $image = $request->file('image');
-        $slug = str_slug($request->name);
+        $slug = Str::slug($request->name);
 
         if (isset($image))
         {
@@ -130,7 +131,7 @@ class ItemController extends Controller
         $item = Item::find($id);
 
         $image = $request->file('image');
-        $slug = str_slug($request->name);
+        $slug = Str::slug($request->name);
 
         if (isset($image))
         {

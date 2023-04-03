@@ -11,7 +11,10 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <a href="{{ route('social.edit', $social->id) }}" class="btn btn-info"><i class="material-icons">edit</i></a>
+                    <a href="{{ route('social.create') }}" class="btn btn-primary">Add New</a>
+                    @if($social)
+                    <a href="{{ route('social.edit', $social->id) }}" class="btn btn-warning">Edit</a>
+                    @endif
 
                     @include('layouts.include.msg')
 
@@ -30,19 +33,36 @@
                                 <tbody>
                                         <tr>
                                             <td>Facebook</td>
-                                            <td><a  target="_blank" href="{{ $social->facebook }}">{{ $social->facebook }}</a></td>
+                                            <td>
+                                                @if($social)
+                                                    <a  target="_blank" href="{{ $social->facebook }}">{{ $social->facebook }}</a>
+                                                @endif
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Twitter</td>
-                                            <td><a  target="_blank" href="{{ $social->twitter }}">{{ $social->twitter }}</a></td>
+                                            <td>
+                                                @if($social)
+                                                    <a  target="_blank" href="{{ $social->twitter }}">{{ $social->twitter }}</a>
+
+                                                @endif
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Google Plus</td>
-                                            <td><a  target="_blank" href="{{ $social->google_plus }}">{{ $social->google_plus }}</a></td>
+                                            <td>
+                                                @if($social)
+                                                    <a  target="_blank" href="{{ $social->google_plus }}">{{ $social->google_plus }}</a>
+                                                @endif
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>LinkedIn</td>
-                                            <td><a  target="_blank" href="{{ $social->linkedin }}">{{ $social->linkedin }}</a></td>
+                                            <td>
+                                                @if($social)
+                                                    <a  target="_blank" href="{{ $social->linkedin }}">{{ $social->linkedin }}</a>
+                                                @endif
+                                            </td>
                                         </tr>
                                 </tbody>
                             </table>

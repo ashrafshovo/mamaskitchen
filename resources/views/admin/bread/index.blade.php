@@ -11,6 +11,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
+                    <a href="{{ route('bread.create') }}" class="btn btn-primary">Add New</a>
                     
                     @include('layouts.include.msg')
 

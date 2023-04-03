@@ -23,6 +23,7 @@
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> --}}
     
     @stack('css')
 </head>
@@ -65,6 +66,8 @@
     {{-- <script src="{{ asset('back/js/demo.js') }}"></script> --}}
     <!-- Custom javascript methods -->
     <script src="{{ asset('back/js/custom-demo.js') }}"></script>
+    
+
 
 
     <script type="text/javascript">
@@ -76,19 +79,9 @@
         });
     </script>
 
-    @if ($errors->any())
 
-        @foreach ($errors->all() as $error)
-                
-            <script>
-                toastr.error('{{ $error }}');
-            </script>
-
-        @endforeach
-    @endif
-
-    {!! Toastr::message() !!}
 
     @stack('scripts')
+
     </body>
 </html>

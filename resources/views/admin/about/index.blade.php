@@ -11,6 +11,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
+                    <a href="{{ route('about.create') }}" class="btn btn-primary">Add New</a>
 
                     @include('layouts.include.msg')
 
@@ -51,6 +52,7 @@
 @push('scripts')
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" charset="utf-8"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js" charset="utf-8"></script>
+    
     <script type="text/javascript">
         $(document).ready(function() {
             $('#table').DataTable();

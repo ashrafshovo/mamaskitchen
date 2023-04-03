@@ -1,0 +1,12 @@
+Idea of further update:
+1. Admin Profile
+2. Multiple Admin with Role
+3. Approve Item by Admin
+4. Email reply for reservation
+
+
+Admin:
+Email: ashrafshovo@gmail.com
+Password: Ashraf@Shovo
+
+Laravel Version: 9.2

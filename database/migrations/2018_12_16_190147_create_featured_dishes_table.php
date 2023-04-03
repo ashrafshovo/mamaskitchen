@@ -21,7 +21,7 @@ class CreateFeaturedDishesTable extends Migration
             $table->string('peo');
             $table->string('ple');
             $table->integer('price');
-            $table->boolean('special');
+            $table->boolean('status')->default('0');
             $table->foreign('menu_category_id')
                 ->references('id')->on('menu_categories')
                 ->constrained()->onDelete('cascade');

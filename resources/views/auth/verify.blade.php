@@ -1,13 +1,21 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('title', 'Mamma\'s Kitchen || Email Verification')
+
+@push('css')
+    
+@endpush
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+                <div class="card-header">
+                    <h4 class="title">
+                        {{ __('Verify Your Email Address') }}
+                    </h4>
+                </div>
 
                 <div class="card-body">
                     @if (session('resent'))
@@ -28,3 +36,7 @@
     </div>
 </div>
 @endsection
+
+@push('js')
+
+@endpush

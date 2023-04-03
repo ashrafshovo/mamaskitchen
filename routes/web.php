@@ -10,6 +10,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ReserveController;
 use App\Http\Controllers\ContactsController;
 
+use App\Http\Controllers\EmailController;
+
+
+//Admin Panel
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\SliderController;
@@ -50,13 +54,27 @@ Route::post('/reservation', [ReserveController::class, 'reserve'])->name('reserv
 Route::post('/contact', [ContactsController::class, 'sendMessage'])->name('contact');
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/email/confirm/{token}', [AdminController::class,'confirm'])->name('confirm');
+Route::post('/email/confirm/{token}', [AdminController::class,'password'])->name('setpassword');
+
+//Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+//Route::get('/sendmail', [EmailController::class, 'index'])->name('test.mail');
 
 
 Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function(){
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('profile', [DashboardController::class, 'profile'])->name('admin.profile');
+    Route::post('profile', [DashboardController::class, 'user_update'])->name('profile.update');
+    Route::get('profile/settings', [DashboardController::class, 'admin_settings'])->name('admin.profile.settings');
+    Route::post('profile/settings', [DashboardController::class, 'admin_settings_update'])->name('admin.settings.update');
+    Route::get('profile/settings/image', [DashboardController::class, 'admin_profile_picture'])->name('admin.profile.picture');
+    Route::post('profile/settings/image', [DashboardController::class, 'admin_profile_picture_update'])->name('admin.picture.update');
+    
+
+    
     Route::resource('admin', AdminController::class);
     Route::resource('slider', SliderController::class);
     Route::resource('category', CategoryController::class);

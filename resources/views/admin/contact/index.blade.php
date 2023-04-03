@@ -36,7 +36,7 @@
                                             
                                             <td>
 
-                                                <a href="{{ route('contact.show', $contact->id) }}" class="btn btn-info btn-sm"><i class="material-icons">details</i></a>
+                                                <a href="{{ route('contact.show', $contact->id) }}" class="btn btn-info btn-sm"><i class="material-icons">visibility</i></a>
                                                 
                                                 <form id="delete-from-{{ $contact->id }}" action="{{ route('contact.destroy', $contact->id) }}" style="display:none;" method="POST">
                                                     @csrf

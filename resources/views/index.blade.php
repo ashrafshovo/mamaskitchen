@@ -97,7 +97,7 @@
                         <li><a href="#about">about</a></li>
                         <li><a href="#pricing">pricing</a></li>
                         <li><a href="#great-place-to-enjoy">beer</a></li>
-                        <li><a href="#breakfast">bread</a></li>
+                        <li><a href="#bread">bread</a></li>
                         <li><a href="#featured-dish">featured</a></li>
                         <li><a href="#reserve">reservation</a></li>
                         <li><a href="#contact">contact</a></li>
@@ -166,7 +166,7 @@
                                             @if($categories->count()>0)
                                                 <li class="filter" data-filter="all">All</li>
                                                 @foreach ($categories as $key=> $category)
-                                                    <li class="filter" data-filter="#{{ $category->slug }}">{{ $category->name }} <span class="badge">{{ $category->items->count() }}</span></li>
+                                                    <li class="filter" data-filter="#{{ $category->slug }}">{{ $category->name }} <span class="badge" style="background-color: #8bc34a !important;">{{ $category->items->count() }}</span></li>
                                                 @endforeach
                                             @endif
                                         </ul><!-- @end #filter-list -->
@@ -261,7 +261,7 @@
 
 
         <!--== 10. Our Breakfast Menu ==-->
-        <section id="breakfast" class="breakfast">
+        <section id="bread" class="breakfast">
             <img class="img-responsive section-icon hidden-sm hidden-xs" src="{{ asset('front/images/icons/bread_black.png') }}">
             <div class="wrapper">
                 <div class="container-fluid">
@@ -377,7 +377,7 @@
                                         <h2>Special</h2>
                                     </div>
                                 </div>
-                                @if($specialdishes>0)
+                                @if($specialdishes->count()>0)
                                     @foreach($specialdishes as $special)
                                         <div class="row">
                                             <div class="menu-item">
@@ -550,7 +550,7 @@
                         <div class="section-content">
                             <p>16th Birn street Get Plaza (4th floar) USA</p>
                             <p>+44 12 213584</p>
-                            <p>example@mail.com </p>
+                            <p>hello@mamaskitchen.vue </p>
                         </div>
                     </div>
                 </div>

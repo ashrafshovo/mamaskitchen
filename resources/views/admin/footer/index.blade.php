@@ -11,7 +11,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    {{-- <a href="{{ route('footer.create') }}" class="btn btn-primary">Add New</a> --}}
+                    <a href="{{ route('footer.create') }}" class="btn btn-primary">Add New</a>
 
                     @include('layouts.include.msg')
 
@@ -34,9 +34,9 @@
                                     @foreach ( $footers as $key=>$footer )
                                         <tr>
                                             <td>{{ $footer->app_name }}</td>
-                                            <td>{{ $footer->developer_link }}</td>
+                                            <td><a target="_blank" href="{{ $footer->developer_link }}">{{ $footer->developer_link }}</a></td>
                                             <td>{{ $footer->developer_name }}</td>
-                                            <td>{{ $footer->theme_by }}</td>
+                                            <td><a target="_blank" href="{{ $footer->theme_by }}">{{ $footer->theme_by }}</a></td>
                                             <td>{{ $footer->theme_by_name }}</td>
                                             <td>
                                                 <a href="{{ route('footer.edit', $footer->id) }}" class="btn btn-info btn-sm"><i class="material-icons">edit</i></a>
